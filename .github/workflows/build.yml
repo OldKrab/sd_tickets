@@ -6,6 +6,6 @@ jobs:
   convert_via_pandoc:
     runs-on: ubuntu-22.04
     steps:
-      - uses: docker://pandoc/core:3.0.1
-        with:
-          args: "-f markdown+rebase_relative_paths+gfm_auto_identifiers --toc -s -t gfm tickets/**/*.md -o README.md"
+        - name: Build markdown
+          run: |
+            bash ./scripts/build_md.sh
