@@ -7,6 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - uses: actions/checkout@v2
-        - name: Build markdown
+
+        - name: create file list
+          id: files_list
           run: |
-            bash ./scripts/build_md.sh
+            echo "files=$(printf '"%s" ' ./tickets/*.md)" > $GITHUB_OUTPUT
+
+        - uses: docker://pandoc/latex:3.0.1
+          with:
+            args: -f markdown+rebase_relative_paths+gfm_auto_identifiers --toc -s -t gfm ${{ steps.files_list.outputs.files }} -o output.md 
