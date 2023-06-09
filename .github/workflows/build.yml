@@ -3,9 +3,9 @@ name: Build
 on: push
 
 jobs:
-  convert_via_pandoc:
-    runs-on: ubuntu-22.04
+  build:
+    runs-on: ubuntu-latest
     steps:
         - name: Build markdown
           run: |
-            bash ./scripts/build_md.sh
+            bash scripts/build_md.sh
