@@ -13,6 +13,6 @@ jobs:
           run: |
             echo "files=$(printf '"%s" ' ./tickets/*.md)" > $GITHUB_OUTPUT
 
-        - uses: docker://pandoc/latex:3.0.1
+        - uses: docker://pandoc/core:3.0.1
           with:
             args: -f markdown+rebase_relative_paths+gfm_auto_identifiers --toc -s -t gfm ${{ steps.files_list.outputs.files }} -o output.md 
