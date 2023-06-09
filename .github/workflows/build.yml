@@ -21,4 +21,4 @@ jobs:
               **/*.md
         - uses: docker://pandoc/core:3.0.1
           with:
-            args: -f markdown+rebase_relative_paths+gfm_auto_identifiers --toc -s -t gfm files=\"${{ steps.glob.outputs.paths }}\" -o output.md 
+            args: -f markdown+rebase_relative_paths+gfm_auto_identifiers --toc -s -t gfm ${{ steps.glob.outputs.paths }} -o output.md 
