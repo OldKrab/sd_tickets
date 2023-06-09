@@ -11,7 +11,7 @@ jobs:
         - name: create file list
           id: files_list
           run: |
-            echo "files=$(printf '"%s" ' ./tickets/*.md)" > $GITHUB_OUTPUT
+            echo "files=$(printf '"%s" ' **/*.md)" > $GITHUB_OUTPUT
 
         - uses: docker://pandoc/core:3.0.1
           with:
